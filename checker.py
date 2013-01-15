@@ -29,7 +29,7 @@ print resp
 #OR (SUBJECT \"SSL\") (SUBJECT \"Python\")
 items = items[0].split() # getting the mails id
 
-with open('taskData.csv', 'ab') as csvfile:
+with open('/Users/gallamine/Documents/PythonStuff/SMSTimeChecker/taskData.csv', 'ab') as csvfile:
     dataCSV = csv.writer(csvfile)
     #dataCSV.writerow(['time','task'])
     # These are all the unseen status updates

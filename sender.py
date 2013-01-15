@@ -22,7 +22,7 @@ import os
 gmail_user = str(sys.argv[1])       #"YOURGMAILACCOUNT@gmail.com"
 gmail_pwd = str(sys.argv[2])        
 sendTo = str(sys.argv[3])           # "YOURVERIZONNUMBER@vtext.com"
-sendRate = 1.0
+sendRate = 1.0                      # Average sending rate in minutes
 
 def mail(to, subject, text, attach):
    msg = MIMEMultipart()
@@ -49,12 +49,13 @@ def mail(to, subject, text, attach):
    # Should be mailServer.quit(), but that crashes...
    mailServer.close()
 
-with open('taskData.csv', 'rwb') as csvfile:
+with open('/Users/gallamine/Documents/PythonStuff/SMSTimeChecker/taskData.csv', 'rwb') as csvfile:
     print "Checking time"
     dataCSV = csv.reader(csvfile)
     for row in dataCSV:
         lastRxTime = row[0]
     lastTime = datetime.datetime.strptime(lastRxTime, "%a, %d %b %Y %H:%M:%S +0000")
+    # This logic is crap. We need to figure out if the last ping has been logged before sending another one ... 
     if lastTime < datetime.datetime.utcnow():
         if random.random() < (1/sendRate):
             print "Sending mail"
