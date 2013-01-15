@@ -22,7 +22,7 @@ import os
 gmail_user = str(sys.argv[1])       #"YOURGMAILACCOUNT@gmail.com"
 gmail_pwd = str(sys.argv[2])        
 sendTo = str(sys.argv[3])           # "YOURVERIZONNUMBER@vtext.com"
-sendRate = 1.0                      # Average sending rate in minutes
+sendRate = 15.0                      # Average sending rate in minutes
 
 def mail(to, subject, text, attach):
    msg = MIMEMultipart()
