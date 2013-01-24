@@ -62,4 +62,6 @@ with open('/Users/gallamine/Documents/PythonStuff/SMSTimeChecker/taskData.csv', 
     
             task = part.get_payload(decode=True)
             print task
-            dataCSV.writerow([mail['Date'],task])
+            
+            dataCSV.writerow([mail['Date']] + task.split(","))
+
